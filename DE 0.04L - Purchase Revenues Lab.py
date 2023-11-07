@@ -38,8 +38,10 @@ display(events_df)
 
 # COMMAND ----------
 
-# TODO
-revenue_df = events_df.FILL_IN
+# ANSWER
+from pyspark.sql.functions import col
+
+revenue_df = events_df.withColumn("revenue", col("ecommerce.purchase_revenue_in_usd"))
 display(revenue_df)
 
 # COMMAND ----------
@@ -62,8 +64,8 @@ print("All test pass")
 
 # COMMAND ----------
 
-# TODO
-purchases_df = revenue_df.FILL_IN
+# ANSWER
+purchases_df = revenue_df.filter(col("revenue").isNotNull())
 display(purchases_df)
 
 # COMMAND ----------
@@ -86,9 +88,15 @@ print("All test pass")
 
 # COMMAND ----------
 
-# TODO
-distinct_df = purchases_df.FILL_IN
-display(distinct_df)
+# ANSWER
+
+# Method 1
+distinct_df1 = purchases_df.select("event_name").distinct()
+display(distinct_df1)
+
+# Method 2
+distinct_df2 = purchases_df.dropDuplicates(["event_name"])
+display(distinct_df2) 
 
 # COMMAND ----------
 
@@ -98,8 +106,8 @@ display(distinct_df)
 
 # COMMAND ----------
 
-# TODO
-final_df = purchases_df.FILL_IN
+# ANSWER
+final_df = purchases_df.drop("event_name")
 display(final_df)
 
 # COMMAND ----------
@@ -120,10 +128,12 @@ print("All test pass")
 
 # COMMAND ----------
 
-# TODO
+# ANSWER
 final_df = (events_df
-  .FILL_IN
-)
+            .withColumn("revenue", col("ecommerce.purchase_revenue_in_usd"))
+            .filter(col("revenue").isNotNull())
+            .drop("event_name")
+           )
 
 display(final_df)
 

@@ -1,6 +1,6 @@
 -- Databricks notebook source
 -- MAGIC %md-sandbox
--- MAGIC 
+-- MAGIC
 -- MAGIC <div style="text-align: center; line-height: 0; padding-top: 9px;">
 -- MAGIC   <img src="https://databricks.com/wp-content/uploads/2018/03/db-academy-rgb-1200px.png" alt="Databricks Learning" style="width: 600px">
 -- MAGIC </div>
@@ -9,7 +9,7 @@
 
 -- MAGIC %md
 -- MAGIC # Create compute sources for Unity Catalog access
--- MAGIC 
+-- MAGIC
 -- MAGIC In this demo you will learn how to:
 -- MAGIC * Configure a cluster for Unity Catalog access
 -- MAGIC * Configure a SQL warehouse for Unity Catalog access
@@ -19,32 +19,32 @@
 
 -- MAGIC %md
 -- MAGIC ## Overview
--- MAGIC 
+-- MAGIC
 -- MAGIC Prior to Unity Catalog, a full data governance solution required careful configuration of workspace settings, access control lists, and cluster settings and policies. It was a co-operative system that, if not properly set up, could allow users to bypass access control altogether.
--- MAGIC 
+-- MAGIC
 -- MAGIC While Unity Catalog introduces some new settings, the system does not require any specific configuration to be secure. Without proper settings, clusters will not be able to access any secured data at all, making Unity Catalog secure by default. This, coupled with its improved fine-grained control and auditing, makes Unity Catalog a significantly evolved data governance solution.
 
 -- COMMAND ----------
 
 -- MAGIC %md
 -- MAGIC ## Prerequisites
--- MAGIC 
+-- MAGIC
 -- MAGIC If you would like to follow along with this demo, you will need the **Allow unrestricted cluster creation** entitlement. Consult with your workspace administrator if you do not have the ability to create clusters or SQL warehouses.
 
 -- COMMAND ----------
 
 -- MAGIC %md
 -- MAGIC ## Data Science and Engineering Workspace
--- MAGIC 
+-- MAGIC
 -- MAGIC Apart from SQL warehouses, clusters are the gateway to your data, as they are the workhorses responsible for running the code in your notebooks. In this section we see how to configure an all-purpose cluster to access Unity Catalog. The same configuration principles can be applied when configuring job clusters for running automated workloads.
 
 -- COMMAND ----------
 
 -- MAGIC %md
 -- MAGIC ### Creating a cluster
--- MAGIC 
+-- MAGIC
 -- MAGIC Let’s create an all-purpose cluster capable of accessing Unity Catalog. For existing Databricks users, this procedure will be familiar, but we introduce and explore some new settings.
--- MAGIC 
+-- MAGIC
 -- MAGIC 1. In the Data Science and Engineering Workspace, click on **Compute** in the left sidebar.
 -- MAGIC 1. Now let’s click **Create Cluster**.
 -- MAGIC 1. Let's specify a name for our cluster. This must be unique in the workspace.
@@ -65,9 +65,9 @@
 
 -- MAGIC %md
 -- MAGIC ### Browsing data
--- MAGIC 
+-- MAGIC
 -- MAGIC Let's take a few moments to get aquainted with the updated **Data** page in the Data Science and Engineering Workspace.
--- MAGIC 
+-- MAGIC
 -- MAGIC 1. Click on **Data** in the left sidebar. Notice that we are presented now with three columns, where previously there were two:
 -- MAGIC     * **Catalogs** allows us to select a catalog, the top-level container in Unity Catalog's data object hierarchy, and the first part of the three-level namespace
 -- MAGIC     * **Databases**, also referred to as schemas, allows us to select a schema within the selected catalog. This is the second part of the three-level namespace (or the first part of the traditional two-level namespace most will be familiar with)
@@ -80,9 +80,9 @@
 
 -- MAGIC %md
 -- MAGIC ### Explore data using a notebook
--- MAGIC 
+-- MAGIC
 -- MAGIC Let's do a quick check using a notebook.
--- MAGIC 
+-- MAGIC
 -- MAGIC 1. Let's create a new SQL notebook in the workspace to run a short test. Let's attach the notebook to the cluster we created.
 -- MAGIC 1. Create a new cell with the query `SHOW GRANTS ON SCHEMA main.default` and run it.
 
@@ -90,16 +90,16 @@
 
 -- MAGIC %md
 -- MAGIC ## Databricks SQL
--- MAGIC 
+-- MAGIC
 -- MAGIC SQL warehouses are the other primary means for accessing your data, as they are the compute resources responsible for running your Dataricks SQL queries. If you want to enable connectivity to external business intelligence (BI) tools, you will also need to channel those through a SQL warehouse.
 
 -- COMMAND ----------
 
 -- MAGIC %md
 -- MAGIC ### Creating a SQL warehouse
--- MAGIC 
+-- MAGIC
 -- MAGIC Because SQL warehouses are purpose-built cluster configurations, Unity Catalog configuration is even easier, as we will see here.
--- MAGIC 
+-- MAGIC
 -- MAGIC 1. Switch to the **SQL** persona.
 -- MAGIC 1. Click **SQL Warehouses** in the left sidebar.
 -- MAGIC 1. Click **Create SQL Warehouse**.
@@ -117,9 +117,9 @@
 
 -- MAGIC %md
 -- MAGIC ### Browsing data
--- MAGIC 
+-- MAGIC
 -- MAGIC Let's take a few moments to get aquainted with the updated **Data Explorer** page.
--- MAGIC 
+-- MAGIC
 -- MAGIC 1. Click on **Data** in the left sidebar. The user interface layout is different than the Data Science and Engineering Workspace. Notice how we are presented with a hierarchical view of the metastore, yet still presenting the same elements.
 -- MAGIC 1. Let's explore the hierarchy. As before, the catalogs, schemas and tables you can select depend on how populated your metastore is, and permissions.
 -- MAGIC 1. From here we can also create objects or manage permissions, however we will reserve these tasks for a later lab.
@@ -128,7 +128,7 @@
 
 -- MAGIC %md
 -- MAGIC ### Explore data using queries
--- MAGIC 
+-- MAGIC
 -- MAGIC Let's repeat the queries we did earlier in the Data Science and Engineering workspace, this time creating a new DBSQL query and running it using the SQL warehouse we just created. As a recap, the query was `SHOW GRANTS ON SCHEMA main.default`.
 
 -- COMMAND ----------
